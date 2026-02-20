@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Насонов Алексей — Head of Digital Marketing</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0B1D3A;
+    --blue: #1A56FF;
+    --blue-light: #3B82F6;
+    --teal: #0FABF5;
+    --bg: #F4F7FF;
+    --white: #FFFFFF;
+    --gray: #6B7280;
+    --gray-light: #E5EAF5;
+    --text: #111827;
+    --card-bg: #FFFFFF;
+    --radius: 16px;
+    --radius-sm: 10px;
+    --shadow: 0 4px 24px rgba(11,29,58,0.08);
+    --shadow-hover: 0 8px 40px rgba(26,86,255,0.14);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    background: rgba(11,29,58,0.95);
+    backdrop-filter: blur(12px);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+  .nav-logo { color:#fff; font-weight:700; font-size:18px; letter-spacing:-0.5px; }
+  .nav-logo span { color: var(--teal); }
+  .nav-links { display:flex; gap:32px; }
+  .nav-links a {
+    color: rgba(255,255,255,0.7); text-decoration:none;
+    font-size:14px; font-weight:500; transition:.2s;
+  }
+  .nav-links a:hover { color:#fff; }
+  .nav-cta {
+    background: var(--blue); color:#fff;
+    padding: 8px 20px; border-radius:8px;
+    text-decoration:none; font-size:14px; font-weight:600;
+    transition:.2s;
+  }
+  .nav-cta:hover { background: var(--blue-light); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--navy) 0%, #0D2D5E 60%, #0B3A6E 100%);
+    display: flex; align-items: center;
+    padding: 100px 40px 60px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content:''; position:absolute; top:-200px; right:-200px;
+    width:600px; height:600px;
+    background: radial-gradient(circle, rgba(26,86,255,0.18) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .hero::after {
+    content:''; position:absolute; bottom:-100px; left:-100px;
+    width:400px; height:400px;
+    background: radial-gradient(circle, rgba(15,171,245,0.12) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .hero-inner { max-width:1100px; margin:0 auto; width:100%; display:flex; align-items:center; gap:60px; }
+  .hero-text { flex:1; }
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:8px;
+    background: rgba(15,171,245,0.15); border:1px solid rgba(15,171,245,0.3);
+    color: var(--teal); padding:6px 16px; border-radius:100px;
+    font-size:13px; font-weight:600; letter-spacing:.5px; text-transform:uppercase;
+    margin-bottom:24px;
+  }
+  .hero-badge::before { content:''; width:6px; height:6px; background:var(--teal); border-radius:50%; }
+  .hero h1 {
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 800; color:#fff;
+    line-height: 1.1; letter-spacing:-1.5px;
+    margin-bottom: 20px;
+  }
+  .hero h1 span { color: var(--teal); }
+  .hero-desc {
+    font-size:18px; color:rgba(255,255,255,0.7);
+    max-width:540px; margin-bottom:36px; line-height:1.7;
+  }
+  .hero-btns { display:flex; gap:16px; flex-wrap:wrap; }
+  .btn-primary {
+    background: var(--blue); color:#fff;
+    padding: 14px 28px; border-radius:10px;
+    text-decoration:none; font-weight:600; font-size:15px;
+    transition:.2s; display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary:hover { background: #2563EB; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(26,86,255,0.4); }
+  .btn-outline {
+    border: 1.5px solid rgba(255,255,255,0.25); color:#fff;
+    padding: 14px 28px; border-radius:10px;
+    text-decoration:none; font-weight:500; font-size:15px;
+    transition:.2s; display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-outline:hover { border-color:#fff; background:rgba(255,255,255,0.08); }
+  .hero-stats { display:flex; gap:40px; margin-top:48px; }
+  .stat-item {}
+  .stat-num { font-size:36px; font-weight:800; color:#fff; letter-spacing:-1px; }
+  .stat-num span { color:var(--teal); }
+  .stat-label { font-size:13px; color:rgba(255,255,255,0.5); font-weight:500; }
+  .hero-photo {
+    width:320px; height:380px; border-radius:24px; overflow:hidden;
+    flex-shrink:0;
+    border: 3px solid rgba(255,255,255,0.1);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+    background: linear-gradient(135deg, #1e3a6e, #0d2247);
+    display:flex; align-items:center; justify-content:center;
+    position:relative;
+  }
+  .hero-photo-inner {
+    font-size:80px; color:rgba(255,255,255,0.15);
+    display:flex; flex-direction:column; align-items:center; gap:12px;
+  }
+  .hero-photo-name { font-size:13px; color:rgba(255,255,255,0.4); font-weight:500; letter-spacing:1px; }
+
+  /* SECTION */
+  section { padding: 80px 40px; }
+  .container { max-width:1100px; margin:0 auto; }
+  .section-label {
+    font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+    color: var(--blue); margin-bottom:12px;
+  }
+  .section-title {
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight:800; letter-spacing:-1px; color:var(--navy);
+    margin-bottom:48px; line-height:1.2;
+  }
+  .section-title span { color:var(--blue); }
+
+  /* SERVICES */
+  .services { background: var(--white); }
+  .services-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:24px; }
+  .service-card {
+    background: var(--bg); border-radius:var(--radius);
+    padding:32px 28px; transition:.3s;
+    border: 1.5px solid var(--gray-light);
+    position:relative; overflow:hidden;
+  }
+  .service-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:3px;
+    background: linear-gradient(90deg, var(--blue), var(--teal));
+    opacity:0; transition:.3s;
+  }
+  .service-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-hover); border-color: rgba(26,86,255,0.2); }
+  .service-card:hover::before { opacity:1; }
+  .service-icon { font-size:32px; margin-bottom:20px; }
+  .service-card h3 { font-size:18px; font-weight:700; color:var(--navy); margin-bottom:12px; }
+  .service-card p { font-size:14px; color:var(--gray); line-height:1.7; }
+
+  /* EXPERIENCE */
+  .experience { background: var(--bg); }
+  .timeline { display:flex; flex-direction:column; gap:0; }
+  .timeline-item {
+    display:grid; grid-template-columns: 200px 1fr;
+    gap:40px; padding:36px 0;
+    border-bottom: 1px solid var(--gray-light);
+    position:relative;
+  }
+  .timeline-item:last-child { border-bottom:none; }
+  .timeline-date {
+    font-size:13px; color:var(--gray); font-weight:500;
+    padding-top:4px;
+  }
+  .timeline-date .period { font-weight:700; color:var(--navy); font-size:14px; }
+  .timeline-dot {
+    width:10px; height:10px; background:var(--blue);
+    border-radius:50%; position:absolute; left:191px; top:44px;
+    box-shadow: 0 0 0 4px rgba(26,86,255,0.15);
+  }
+  .timeline-content h3 { font-size:18px; font-weight:700; color:var(--navy); margin-bottom:4px; }
+  .timeline-content .company {
+    font-size:14px; color:var(--blue); font-weight:600; margin-bottom:12px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .company-tag {
+    background: rgba(26,86,255,0.08); color:var(--blue);
+    padding: 2px 10px; border-radius:100px; font-size:11px; font-weight:600;
+  }
+  .timeline-content p { font-size:14px; color:var(--gray); line-height:1.8; }
+  .timeline-results { margin-top:16px; display:flex; flex-wrap:wrap; gap:10px; }
+  .result-tag {
+    background: rgba(15,171,245,0.1); border:1px solid rgba(15,171,245,0.2);
+    color: #0369A1; padding:5px 14px; border-radius:100px;
+    font-size:12px; font-weight:600;
+  }
+
+  /* CASES */
+  .cases { background: var(--white); }
+  .cases-grid { display:grid; grid-template-columns: repeat(2,1fr); gap:24px; }
+  .case-card {
+    background: var(--bg); border-radius:var(--radius);
+    padding:32px; transition:.3s; border:1.5px solid var(--gray-light);
+    cursor:pointer;
+  }
+  .case-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-hover); border-color:rgba(26,86,255,0.2); }
+  .case-tag {
+    display:inline-block; background:rgba(26,86,255,0.08);
+    color:var(--blue); font-size:11px; font-weight:700;
+    padding:4px 12px; border-radius:100px; margin-bottom:16px;
+    letter-spacing:.5px; text-transform:uppercase;
+  }
+  .case-card h3 { font-size:20px; font-weight:700; color:var(--navy); margin-bottom:12px; }
+  .case-card p { font-size:14px; color:var(--gray); line-height:1.7; margin-bottom:20px; }
+  .case-metrics { display:flex; gap:24px; }
+  .metric { }
+  .metric-num { font-size:28px; font-weight:800; color:var(--blue); letter-spacing:-1px; }
+  .metric-label { font-size:12px; color:var(--gray); font-weight:500; }
+
+  /* SKILLS */
+  .skills { background: var(--bg); }
+  .skills-grid { display:grid; grid-template-columns: repeat(2,1fr); gap:32px; }
+  .skill-group h3 { font-size:15px; font-weight:700; color:var(--navy); margin-bottom:16px; }
+  .skill-tags { display:flex; flex-wrap:wrap; gap:10px; }
+  .skill-tag {
+    background:#fff; border:1.5px solid var(--gray-light);
+    color:var(--text); padding:7px 16px; border-radius:8px;
+    font-size:13px; font-weight:500; transition:.2s;
+  }
+  .skill-tag:hover { border-color:var(--blue); color:var(--blue); }
+
+  /* EDUCATION */
+  .education { background:var(--white); }
+  .edu-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .edu-card {
+    background:var(--bg); border-radius:var(--radius);
+    padding:28px 24px; border:1.5px solid var(--gray-light);
+    transition:.2s;
+  }
+  .edu-card:hover { border-color:rgba(26,86,255,0.2); }
+  .edu-year { font-size:12px; font-weight:700; color:var(--blue); letter-spacing:1px; margin-bottom:10px; }
+  .edu-card h3 { font-size:16px; font-weight:700; color:var(--navy); margin-bottom:8px; line-height:1.4; }
+  .edu-card p { font-size:13px; color:var(--gray); line-height:1.6; }
+
+  /* CONTACT */
+  .contact {
+    background: linear-gradient(135deg, var(--navy) 0%, #0D2D5E 100%);
+    color:#fff;
+  }
+  .contact .section-title { color:#fff; }
+  .contact .section-label { color:var(--teal); }
+  .contact-inner { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+  .contact-links { display:flex; flex-direction:column; gap:16px; }
+  .contact-link {
+    display:flex; align-items:center; gap:16px;
+    background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.1);
+    border-radius:12px; padding:16px 20px; text-decoration:none;
+    color:#fff; font-size:15px; transition:.2s;
+  }
+  .contact-link:hover { background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.2); }
+  .contact-link-icon { font-size:20px; width:40px; text-align:center; }
+  .contact-link-text { }
+  .contact-link-label { font-size:11px; color:rgba(255,255,255,0.5); font-weight:600; letter-spacing:.5px; text-transform:uppercase; }
+  .contact-link-value { font-weight:600; }
+  .contact-desc { font-size:16px; color:rgba(255,255,255,0.7); line-height:1.8; }
+  .contact-desc strong { color:#fff; }
+
+  /* FOOTER */
+  footer {
+    background: #060F1F;
+    padding: 28px 40px;
+    display:flex; align-items:center; justify-content:space-between;
+    color:rgba(255,255,255,0.4); font-size:13px;
+  }
+
+  @media (max-width: 900px) {
+    nav { padding:0 20px; }
+    .nav-links { display:none; }
+    .hero { padding:100px 20px 60px; }
+    .hero-inner { flex-direction:column; }
+    .hero-photo { width:100%; max-width:280px; height:220px; }
+    section { padding:60px 20px; }
+    .services-grid, .cases-grid, .edu-grid { grid-template-columns:1fr; }
+    .skills-grid { grid-template-columns:1fr; }
+    .timeline-item { grid-template-columns:1fr; gap:8px; }
+    .timeline-dot { display:none; }
+    .contact-inner { grid-template-columns:1fr; }
+    .hero-stats { flex-wrap:wrap; gap:24px; }
+    footer { flex-direction:column; gap:8px; text-align:center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Алексей <span>Насонов</span></div>
+  <div class="nav-links">
+    <a href="#services">Услуги</a>
+    <a href="#experience">Опыт</a>
+    <a href="#cases">Кейсы</a>
+    <a href="#skills">Навыки</a>
+    <a href="#education">Обучение</a>
+    <a href="#contact">Контакты</a>
+  </div>
+  <a href="https://docs.google.com/document/d/1Shu_jmACVv30Tzewe3o8y7N_TlxevMuP" target="_blank" class="nav-cta">Скачать CV</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">Открыт к предложениям</div>
+      <h1>Head of <span>Digital</span><br>Marketing & CMO</h1>
+      <p class="hero-desc">
+        27+ лет в маркетинге. Специализация — B2B digital, лидогенерация, цифровая трансформация, продвижение IT-продуктов.
+      </p>
+      <div class="hero-btns">
+        <a href="#cases" class="btn-primary">Смотреть кейсы →</a>
+        <a href="#contact" class="btn-outline">Связаться</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">27<span>+</span></div>
+          <div class="stat-label">Лет в маркетинге</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">7.4<span>x</span></div>
+          <div class="stat-label">Рост лидогенерации</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">40<span>%</span></div>
+          <div class="stat-label">Новых продаж с digital</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <div class="hero-photo-inner">
+        <span>👤</span>
+        <span class="hero-photo-name">ALEXEY NASONOV</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-label">Что я делаю</div>
+    <div class="section-title">Услуги и <span>компетенции</span></div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📈</div>
+        <h3>Лидогенерация</h3>
+        <p>Внедрение инновационных digital-инструментов. Аудит маркетинга, анализ конкурентов. Качественный анализ ЦА и их перспективных потребностей.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎯</div>
+        <h3>Digital Marketing</h3>
+        <p>SEO, PPC (Яндекс/Google), SMM, email-маркетинг, контент-маркетинг. Комплексный marketing mix для роста продаж за счёт лояльности клиентов.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>Поиск и тест ниш</h3>
+        <p>Маркетинговые исследования, тестирование продуктовых гипотез. Экспертные, потребительские и online-интервью. Быстро и эффективно.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🚀</div>
+        <h3>Вывод продукта на рынок</h3>
+        <p>Product-market fit, MVP, Customer Journey Map, CustDev, JTBD. Опыт вывода IT-продуктов, FMCG-брендов и B2B-сервисов.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <h3>Цифровая трансформация</h3>
+        <p>Описание и оптимизация бизнес-процессов, внедрение CRM и call-tracking, digital-трансформация отделов маркетинга и продаж.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <h3>Стратегия и аналитика</h3>
+        <p>Разработка коммерческих и маркетинговых стратегий, бюджетирование до 20 млн руб. Маркетинговый аудит и due diligence инвест-проектов.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="container">
+    <div class="section-label">Карьера</div>
+    <div class="section-title">Опыт <span>работы</span></div>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div class="timeline-date">
+          <div class="period">Авг 2024 — н.в.</div>
+          <div>~1,5 года</div>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>Менеджер по маркетинговым проектам</h3>
+          <div class="company">Маркетинг консалтинг <span class="company-tag">Фриланс</span></div>
+          <p>Упаковка узбекской IT-платформы Bizkim.uz для выхода на российский рынок (b2b классифайд). Маркетинговое сопровождение AR-продуктов для застройщиков (glazarbuild.com, glazarmarine.ru). Упаковка франшизы управления апарт-отелями Portpm.ru / port-comfort.pro.</p>
+          <div class="timeline-results">
+            <span class="result-tag">🏆 Премия SBER500</span>
+            <span class="result-tag">📊 Новое финансирование от стартап-фондов</span>
+            <span class="result-tag">🌐 Bizkim.uz — выход на РФ</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">
+          <div class="period">Апр — Авг 2024</div>
+          <div>5 месяцев</div>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>Управляющий маркетингом федеральной розничной сети</h3>
+          <div class="company">Северсталь — baza.severstal.com <span class="company-tag">Металлургия</span></div>
+          <p>Продвижение новой розничной сети металлопродукции в 5 городах (СПб, Ярославль, Н.Новгород, Краснодар, Череповец). Радиореклама, наружная реклама, оптимизация сайта под региональные поддомены, запуск Авито и 2ГИС, SEO и контекстная реклама.</p>
+          <div class="timeline-results">
+            <span class="result-tag">+17% узнаваемость</span>
+            <span class="result-tag">40% продаж от digital-лидов</span>
+            <span class="result-tag">1,2 млн тонн металлопродукции</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">
+          <div class="period">Авг 2023 — Мар 2024</div>
+          <div>8 месяцев</div>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>Руководитель отдела маркетинга и PR</h3>
+          <div class="company">ГиперМетод IBS — hypermethod.ru <span class="company-tag">IT / e-learning</span></div>
+          <p>Аудит маркетинговых ресурсов, запуск вебинаров и email-рассылок, копирайтинг. Разработана маркетинговая стратегия и план-бюджет на 2024. Организовано участие компании в ивентах и пресс-релизах.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">
+          <div class="period">Окт 2022 — Авг 2023</div>
+          <div>11 месяцев</div>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>Продакт (маркетинг) менеджер</h3>
+          <div class="company">Верум-Софт — verum-agro.ru <span class="company-tag">IT / AgriTech</span></div>
+          <p>Консультирование B2B-маркетплейса для сельхозрынка. Оптимизация digital-каналов, SMM, контент-маркетинг. Разработка стратегии монетизации рекламы. UX-аналитика кабинетов Продавца и Покупателя.</p>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">
+          <div class="period">Сен 2020 — Окт 2022</div>
+          <div>2 года 2 мес.</div>
+        </div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h3>Управляющий маркетингом</h3>
+          <div class="company">Промстройметалл — psmetall.com <span class="company-tag">Металлообработка</span></div>
+          <p>Инициировал проект цифровизации бизнеса. SERM/SEO для построения HR-бренда, внедрение PR-программы продвижения металлотрейдинга, новый сайт chistlist.ru. Компания вошла в РСПМ.</p>
+          <div class="timeline-results">
+            <span class="result-tag">-23% текучка кадров</span>
+            <span class="result-tag">+17% прирост продаж</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CASES -->
+<section class="cases" id="cases">
+  <div class="container">
+    <div class="section-label">Портфолио</div>
+    <div class="section-title">Кейсы и <span>результаты</span></div>
+    <div class="cases-grid">
+
+      <div class="case-card">
+        <div class="case-tag">B2B · Пищепром</div>
+        <h3>Ингредиенты.Развитие</h3>
+        <p>Реструктуризация сайта, интеграция 1C и учётных систем с CRM. Полный перезапуск интернет-маркетинга крупного производителя и трейдера.</p>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="metric-num">7.4×</div>
+            <div class="metric-label">Рост лидогенерации</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">2.3×</div>
+            <div class="metric-label">Снижение стоимости заявки</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">&lt;6 мес</div>
+            <div class="metric-label">Срок реализации</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-tag">B2B · Недвижимость</div>
+        <h3>Ремком — ремонт коммерческой недвижимости</h3>
+        <p>Организация интернет-маркетинга нового бизнеса «под ключ». Нейминг, фирменный стиль, динамическая подстановка запросов, quizz-воронки.</p>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="metric-num">3 мес</div>
+            <div class="metric-label">Окупаемость инвестиций</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">0→∞</div>
+            <div class="metric-label">Запуск с нуля</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-tag">FMCG · Брендинг</div>
+        <h3>Ребрендинг и новый бренд «Ешь Здорово!»</h3>
+        <p>Создание маркетинговой платформы компании и брендов. Ребрендинг корпоративного сайта (corpdidi.ru), разработка PR press-портрета.</p>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="metric-num">Full</div>
+            <div class="metric-label">Цикл брендинга</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">B2C+B2B</div>
+            <div class="metric-label">Сегменты</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-tag">SEO · Аудит</div>
+        <h3>Сантехстандарт — аудит интернет-маркетинга</h3>
+        <p>Аудит системы интернет-маркетинга российского производителя инженерной сантехники santehstandart.com. Оптимизация SEO и рекламных каналов.</p>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="metric-num">1.4 млн</div>
+            <div class="metric-label">Экономия в руб.</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">SEO</div>
+            <div class="metric-label">Оптимизация</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-tag">Металлургия · Retail</div>
+        <h3>Северсталь — запуск розничной сети</h3>
+        <p>Запуск digital и offline продвижения новой розничной сети металлопродукции в 5 городах. Радиореклама, OOH, SEO, контекст, Авито, 2ГИС.</p>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="metric-num">40%</div>
+            <div class="metric-label">Продаж от digital</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">+17%</div>
+            <div class="metric-label">Узнаваемость</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">5</div>
+            <div class="metric-label">Городов</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-card">
+        <div class="case-tag">Franchise · FMCG</div>
+        <h3>Развитие франшизы SpongeBob (Губка Боб)</h3>
+        <p>Полный цикл разработки и вывода продукта на рынок: от упаковки до трейд-маркетинга. Локализованная презентация по продукту.</p>
+        <div class="case-metrics">
+          <div class="metric">
+            <div class="metric-num">Full</div>
+            <div class="metric-label">Go-to-Market</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">B2C</div>
+            <div class="metric-label">Trade marketing</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+      <a href="https://docs.google.com/document/d/10D5aQuOwEGfYBos_56Wf-LCf72FpP7qw" target="_blank" class="btn-primary" style="display:inline-flex;">IT-портфолио →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="container">
+    <div class="section-label">Компетенции</div>
+    <div class="section-title">Профессиональные <span>навыки</span></div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Product & Strategy</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Product-market fit</span>
+          <span class="skill-tag">MVP</span>
+          <span class="skill-tag">CustDev</span>
+          <span class="skill-tag">JTBD</span>
+          <span class="skill-tag">Customer Journey Map</span>
+          <span class="skill-tag">Продуктовые метрики</span>
+          <span class="skill-tag">Тестирование гипотез</span>
+          <span class="skill-tag">Дизайн-мышление</span>
+          <span class="skill-tag">Вывод продукта на рынок</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Digital Marketing</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">SEO / SEM</span>
+          <span class="skill-tag">Яндекс Директ</span>
+          <span class="skill-tag">Google Ads</span>
+          <span class="skill-tag">SMM</span>
+          <span class="skill-tag">Email-маркетинг</span>
+          <span class="skill-tag">Контент-маркетинг</span>
+          <span class="skill-tag">Копирайтинг</span>
+          <span class="skill-tag">CRM / Call-tracking</span>
+          <span class="skill-tag">Яндекс Метрика</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Analytics & Research</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Маркетинговые исследования</span>
+          <span class="skill-tag">Конкурентная аналитика</span>
+          <span class="skill-tag">SWOT / NPS</span>
+          <span class="skill-tag">UX-аналитика</span>
+          <span class="skill-tag">Аудит маркетинга</span>
+          <span class="skill-tag">Фокус-группы</span>
+          <span class="skill-tag">User Research</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <h3>Management</h3>
+        <div class="skill-tags">
+          <span class="skill-tag">Управление командами до 50 чел.</span>
+          <span class="skill-tag">Бюджетирование до 20 млн руб.</span>
+          <span class="skill-tag">B2B / B2C маркетинг</span>
+          <span class="skill-tag">PR и бренд-менеджмент</span>
+          <span class="skill-tag">Event-маркетинг</span>
+          <span class="skill-tag">Project Management</span>
+          <span class="skill-tag">Удалённое управление</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="education" id="education">
+  <div class="container">
+    <div class="section-label">Обучение</div>
+    <div class="section-title">Образование и <span>развитие</span></div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-year">2022</div>
+        <h3>Продакт-менеджер в IT</h3>
+        <p>Томский государственный университет (дистанционно). Диплом государственного образца.</p>
+      </div>
+      <div class="edu-card">
+        <div class="edu-year">2021</div>
+        <h3>Product Management (middle)</h3>
+        <p>ProductStar, Москва. Факультет управления продуктом.</p>
+      </div>
+      <div class="edu-card">
+        <div class="edu-year">2020</div>
+        <h3>Project Management</h3>
+        <p>GeekBrains, Москва. Управление проектами в бизнесе и IT.</p>
+      </div>
+      <div class="edu-card">
+        <div class="edu-year">2019</div>
+        <h3>B2B e-Marketing</h3>
+        <p>Completo.ru — построение систем электронного маркетинга в B2B-компаниях.</p>
+      </div>
+      <div class="edu-card">
+        <div class="edu-year">1993–1998</div>
+        <h3>Международный менеджмент</h3>
+        <p>СПбГУЭФ (ФИНЭК). Диплом с отличием — Diploma cum laude.</p>
+      </div>
+      <div class="edu-card" style="background:linear-gradient(135deg,rgba(26,86,255,0.05),rgba(15,171,245,0.05)); border-color:rgba(26,86,255,0.15);">
+        <div class="edu-year" style="color:var(--gray);">Языки</div>
+        <h3>Английский C1</h3>
+        <p>Advanced. Ведение переговоров, деловая переписка, разработка англоязычных материалов.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div>
+        <div class="section-label">Контакты</div>
+        <div class="section-title">Готов к новым<br><span>проектам</span></div>
+        <p class="contact-desc">
+          Рассматриваю <strong>проектную работу</strong> и <strong>постоянную занятость</strong>.<br>
+          Мотивация: <strong>80–120 тыс. руб + KPI</strong>.<br><br>
+          Проживаю в Санкт-Петербурге. Готов к переезду в регионы РФ и длительным командировкам.
+        </p>
+      </div>
+      <div class="contact-links">
+        <a href="tel:+79939701802" class="contact-link">
+          <div class="contact-link-icon">📞</div>
+          <div class="contact-link-text">
+            <div class="contact-link-label">Телефон / WhatsApp</div>
+            <div class="contact-link-value">+7 993 970-18-02</div>
+          </div>
+        </a>
+        <a href="mailto:brandgod@gmail.com" class="contact-link">
+          <div class="contact-link-icon">✉️</div>
+          <div class="contact-link-text">
+            <div class="contact-link-label">Email</div>
+            <div class="contact-link-value">brandgod@gmail.com</div>
+          </div>
+        </a>
+        <a href="https://t.me/Flex1" target="_blank" class="contact-link">
+          <div class="contact-link-icon">✈️</div>
+          <div class="contact-link-text">
+            <div class="contact-link-label">Telegram</div>
+            <div class="contact-link-value">@Flex1</div>
+          </div>
+        </a>
+        <a href="https://www.linkedin.com/in/alexey-nasonov-997a698/" target="_blank" class="contact-link">
+          <div class="contact-link-icon">💼</div>
+          <div class="contact-link-text">
+            <div class="contact-link-label">LinkedIn</div>
+            <div class="contact-link-value">alexey-nasonov-997a698</div>
+          </div>
+        </a>
+        <a href="https://docs.google.com/document/d/1Shu_jmACVv30Tzewe3o8y7N_TlxevMuP" target="_blank" class="contact-link" style="background:rgba(26,86,255,0.15); border-color:rgba(26,86,255,0.3);">
+          <div class="contact-link-icon">📄</div>
+          <div class="contact-link-text">
+            <div class="contact-link-label">Резюме</div>
+            <div class="contact-link-value">Скачать полное CV</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>© 2025 Насонов Алексей Геннадьевич — Head of Digital Marketing</div>
+  <div>DIGITALization of Your Business</div>
+</footer>
+
+</body>
+</html>
